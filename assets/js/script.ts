@@ -10,7 +10,7 @@ function fetchPlanesAndPhenomenoms()
         console.log(json.data)
 
     }).then(function () {
-        console.log(planes);
+        //console.log(planes);
         blindEternities = new BlindEternities();
         blindEternities.start(planes);
 
@@ -18,7 +18,9 @@ function fetchPlanesAndPhenomenoms()
         blindEternities.goLeft(planes);
     }).then(function () {
         blindEternities.fillUpNulls(planes);
+
     }).then(function () {
+        console.log(planes);
         console.log(blindEternities.map)
     }).catch(function (err) {
        console.error(err);

@@ -20,8 +20,8 @@ class BlindEternities{
 
     public fillUpNulls(cards)
     {
-        console.log(this)
-        console.log(cards);
+        //console.log(this)
+        //console.log(cards);
         if(this.map[1][2]===null)
         {
             this.map[1][2] = cards.shift();
@@ -89,6 +89,42 @@ class BlindEternities{
             }
         });
 
+    }
+
+    public goDown(cards)
+    {
+        this.map.push([null,null,null,null,null]);
+        let row:any[] = this.map.shift();
+        row.forEach(function (removed) {
+            if(removed !==null)
+            {
+                cards.push(removed);
+            }
+        });
+    }
+
+    public goUpLeft(cards)
+    {
+        this.goUp(cards);
+        this.goLeft(cards);
+    }
+
+    public goUpRight(cards)
+    {
+        this.goUp(cards);
+        this.goRight(cards);
+    }
+
+    public goDownRight(cards)
+    {
+        this.goDown(cards);
+        this.goRight(cards);
+    }
+
+    public goDownLeft(cards)
+    {
+        this.goDown(cards);
+        this.goLeft(cards);
     }
 
     public start(cards)

@@ -11,8 +11,8 @@ var BlindEternities = /** @class */ (function () {
         return shuffledDeck;
     };
     BlindEternities.prototype.fillUpNulls = function (cards) {
-        console.log(this);
-        console.log(cards);
+        //console.log(this)
+        //console.log(cards);
         if (this.map[1][2] === null) {
             this.map[1][2] = cards.shift();
         }
@@ -60,6 +60,31 @@ var BlindEternities = /** @class */ (function () {
                 cards.push(removed);
             }
         });
+    };
+    BlindEternities.prototype.goDown = function (cards) {
+        this.map.push([null, null, null, null, null]);
+        var row = this.map.shift();
+        row.forEach(function (removed) {
+            if (removed !== null) {
+                cards.push(removed);
+            }
+        });
+    };
+    BlindEternities.prototype.goUpLeft = function (cards) {
+        this.goUp(cards);
+        this.goLeft(cards);
+    };
+    BlindEternities.prototype.goUpRight = function (cards) {
+        this.goUp(cards);
+        this.goRight(cards);
+    };
+    BlindEternities.prototype.goDownRight = function (cards) {
+        this.goDown(cards);
+        this.goRight(cards);
+    };
+    BlindEternities.prototype.goDownLeft = function (cards) {
+        this.goDown(cards);
+        this.goLeft(cards);
     };
     BlindEternities.prototype.start = function (cards) {
         this.map.push([null, null, null, null, null]);
